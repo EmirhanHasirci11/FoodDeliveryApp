@@ -1,0 +1,43 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Üye Listeleme Sayfası</h1>
+<a class="btn btn-outline-success float-end" asp-action="Create">Üye Ekle</a>
+<br />
+<br />
+<div class="table-responsive mb-3 ms-2">
+    <table class="table table-bordered table-dark " style="max-height: 2px; -webkit-overflow-scrolling: touch; overflow-y: scroll;">
+        <thead class="sticky-top text-center">
+            <tr>
+                <th>ID</th>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Telefon</th>
+                <th>Mail</th>
+                <th>Doğum Tarihi</th>
+                <th>Sifre</th>
+                <th>Bakiye</th>
+                <th colspan="2">Araçlar</th>
+                
+            </tr>
+        </thead>
+        <tbody class="text-center" style="max-height: 200px; -webkit-overflow-scrolling: touch; overflow-y: scroll;">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Ad</td>                                                           
+                    <td>@item.Soyad</td>                                                           
+                    <td>@item.Telefon</td>                                                           
+                    <td>@item.Mail</td>                                                           
+                    <td>@item.Dogum_Tarihi</td>                                                         
+                    <td>@item.Sifre</td>                                                           
+                    <td>@item.Cuzdan_Bakiye</td>
+                    <td><a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.ID">Guncelle</a></td>
+                    <td><a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.ID">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

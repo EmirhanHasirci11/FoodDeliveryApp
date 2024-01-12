@@ -1,0 +1,43 @@
+﻿@model List<Enterprise>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>İşletme Listeleme Sayfası</h1>
+<a class="btn btn-outline-success float-end" asp-action="Create">İşletme Ekle</a>
+<br />
+<br />
+<div class="table-responsive mb-3 ms-2">
+    <table class="table table-bordered table-dark " style="max-height: 2px; -webkit-overflow-scrolling: touch; overflow-y: scroll;">
+        <thead class="sticky-top text-center">
+            <tr>
+                <th>ID</th>
+                <th>Ad</th>
+                <th>Aciklama</th>
+                <th>Son Teslim Saati</th>
+                <th>Minimum Getirme Ücreti</th>
+                <th>İsletme Puanı</th>
+                <th>Adres</th>
+                                
+                <th colspan="2">Araçlar</th>
+
+            </tr>
+        </thead>
+        <tbody class="text-center" style="max-height: 200px; -webkit-overflow-scrolling: touch; overflow-y: scroll;">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Ad</td>
+                    <td>@item.Aciklama</td>
+                    <td>@item.Son_Teslim_Tarih.ToShortTimeString()</td>
+                    <td>@item.Minimum_Getirme_Tutar</td>
+                    <td>@item.İsletme_Puan</td>
+                    <td>@item.Adres</td>                    
+                    <td><a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.ID">Guncelle</a></td>
+                    <td><a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.ID">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
